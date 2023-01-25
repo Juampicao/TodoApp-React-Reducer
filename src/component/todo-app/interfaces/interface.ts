@@ -26,3 +26,10 @@ export const INITIAL_STATE_TODO = {
 export const INITIAL_STATE_TASK : Task = {
     title: "", description: "", status: "pending" 
 }
+
+export const INITIAL_SELECTED_TASK = {
+  task: {
+    title: "AA", description: "Desc", status: "pending" 
+  },
+  status: "pending"
+}

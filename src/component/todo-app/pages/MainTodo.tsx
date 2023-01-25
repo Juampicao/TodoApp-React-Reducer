@@ -11,40 +11,17 @@ export default function MainTodo() {
     const {
         state,
         AddTask,
-        ChangeCompletedTask,
-        ChangePendingTask,
-        ChangeProcessTask,
         DeleteTask,
+        changeStateTask,
         
     } = useTodoProvider();
     
-    
     const [task, setTask] = useState<Task>(INITIAL_STATE_TASK);
-        
-    /**
-     * Change to next Step on the road automatically.
-     * @param task : Task
-     * @param index : number
-     */
-    function changeStateTask(task : Task, index: number) {
-    if (task.status === "pending") {
-        ChangeProcessTask(index)
-    }
-    if (task.status === "process") {
-        ChangeCompletedTask(index)
-    }
-    if (task.status === "completed")
-        ChangePendingTask(index)
-    }
-
     
-
     return (
         <>
-            <h1 className="font-bold text-4xl text-center">  Todo App UseReducer</h1>
-
-            <div className="flex space-x-5">
-
+            <h1 className="font-bold text-4xl text-center">  To-Do App UseReducer</h1>
+            <div className="grid grid-rows md:grid-cols-2">
                 <div>
                     {/* Form */}
                     <form onSubmit={e => {
@@ -52,16 +29,16 @@ export default function MainTodo() {
                         e.preventDefault();
                         setTask({ title: "", description: "", status: "pending"})
                     }}>
-                        <div className="font-bold my-2 bg-slate-50 mx-2 p-5 max-w-md grid grid-rows-2 gap-y-3">
+                        <div className="font-bold my-2 bg-slate-50 mx-2 p-5 max-w-md grid grid-rows-2 gap-y-3 items-center">
                         <h2 className="font-bold text-center text-xl uppercase"> Agregar Tarea</h2>
                             <div className="grid grid-cols-2">
                                 <label htmlFor="title" className="uppercase"> Titulo</label>
-                                <input type="text" id="title" className="border-black border-2 rounded-xl p-1" value={task.title} onChange={(e) => setTask({ ...task ,title: e.target.value })} />
+                                <input type="text" id="title" className="border-black border-2 rounded-xl p-1 " value={task.title} onChange={(e) => setTask({ ...task ,title: e.target.value })} />
                             </div>
                             
                             <div className="grid grid-cols-2">
                                 <label htmlFor="description" className="uppercase"> Descripcion</label>
-                                <input type="text" id="description" className="border-black border-2 rounded-xl p-1" value={task.description} onChange={(e) => setTask({...task, description: e.target.value })} />
+                                <textarea  id="description" className="border-black border-2 rounded-xl p-1" value={task.description} onChange={(e) => setTask({...task, description: e.target.value })} />
                             </div>
 
                             <MyButton
@@ -103,11 +80,13 @@ export default function MainTodo() {
             </div>
 
             {/* Listed Task By Status */}            
-            <div className="grid grid-cols-3 ">
+            <div className="grid grid-rows grid-cols-1 md:grid-rows-1 md:grid-cols-3 ">
                 <MyTable tableStatus="completed" title="Completadas"/>
                 <MyTable tableStatus="pending"  title="Pendientes"/>
                 <MyTable tableStatus="process"  title="En Proceso"/>
             </div>
+     
         </>
     )
 }
+
