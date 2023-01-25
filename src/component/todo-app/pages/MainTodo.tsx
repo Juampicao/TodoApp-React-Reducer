@@ -1,18 +1,26 @@
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import { useLocalStorage } from "../../localStorage-component/hooks/useLocalStorage";
+import { usePersistedReducer } from "../hooks/usePersistedReducer";
 import { Task } from "../interfaces/interface";
 import { todoReducer } from "../reducer/TodoReducer";
 
 
 export const INITIAL_STATE_TODO = {
     todos: [],
-    todoCount: 0
 }
 
 
 export default function MainTodo() {
     
-    const [{ todos, todoCount }, dispatch] = useReducer(todoReducer, INITIAL_STATE_TODO)
+    // const [{ state.todos, todoCount }, dispatch] = useReducer(todoReducer, INITIAL_STATE_TODO)
+
+
+    const storageKey = 'MY_STORAGE_KEY'
+
+    const { state , dispatch } = usePersistedReducer(todoReducer, INITIAL_STATE_TODO, storageKey)
+
+
+    // const { state.todos, dispatch } = useTodoProvider();
     
     const [task, setTask] = useState<Task>({ title: "", description: "", status: "pending" });
     const [prueba, setPrueba] = useLocalStorage( "task" , {title: "", description: "", status: "pending" });
@@ -111,9 +119,9 @@ export default function MainTodo() {
             </form>
     
             {/* Change State and Delete */}
-            <h2 className="font-bold text-xl">Cantidad de Tareas : {todos.length} </h2>
+            <h2 className="font-bold text-xl">Cantidad de Tareas : {state.todos.length} </h2>
             
-            {todos.map((task: Task, index: number) => (
+            {state.todos.map((task: Task, index: number) => (
                 <div className="flex items-center space-x-10 my-2" key={index}
                 >
                     <p className="text-blue-500 text-xl font-bold">
@@ -138,17 +146,17 @@ export default function MainTodo() {
             <div className="grid grid-cols-3 ">
                 <div className="my-3">
                     <h2 className="font-bold text-xl text-yellow-500"> Tareas Pendientes</h2>
-                    {todos.map((task: Task) => task.status === "pending" ? JSON.stringify(task,null,2) : "")}
+                    {state.todos.map((task: Task) => task.status === "pending" ? JSON.stringify(task,null,2) : "")}
                 </div>
 
                 <div className="my-3">
                     <h2 className="font-bold text-xl text-blue-500"> Tareas Proceso</h2>
-                    {todos.map((task: Task) => task.status === "process" ? JSON.stringify(task,null,2) : "")}
+                    {state.todos.map((task: Task) => task.status === "process" ? JSON.stringify(task,null,2) : "")}
                 </div>
 
                 <div className="my-3">
                     <h2 className="font-bold text-xl text-green-500"> Tareas Completadas</h2>
-                    {todos.map((task: Task) => task.status === "completed" ? JSON.stringify(task,null,2) : "")}
+                    {state.todos.map((task: Task) => task.status === "completed" ? JSON.stringify(task,null,2) : "")}
                 </div>
             </div>
                 

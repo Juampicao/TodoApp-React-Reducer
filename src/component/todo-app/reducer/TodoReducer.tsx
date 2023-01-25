@@ -1,4 +1,8 @@
-import { Task, TodoAction } from "../interfaces/interface"
+import { Task, TodoAction } from "../interfaces/interface";
+
+interface StateTodo {
+    todoList: Task[]; 
+}
 
 export function todoReducer(state: any, action: TodoAction) {
     switch (action.type) {
