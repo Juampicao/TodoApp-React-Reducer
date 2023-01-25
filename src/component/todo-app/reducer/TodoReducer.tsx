@@ -4,11 +4,23 @@ export function todoReducer(state: any, action: TodoAction) {
     switch (action.type) {
         case "add-todo":
             return {
-                todos: [...state.todos,  { task: action.payload.task, completed: false }]
+                todos: [...state.todos,  { task: action.payload.task, status: "pending" }]
+
             }
-        case "completedTask":
+        case "changeToCompleted":
             return {
-                todos: state.todos.map((todo: Task, index:number) => index === action.payload.index ? {...todo, completed: !todo.completed } : todo  ) 
+                todos: state.todos.map((todo: Task, index:number) => index === action.payload.index ? {...todo, status: "completed" } : todo  ) 
+
+            }
+        case "changeToPending":
+            return {
+                todos: state.todos.map((todo: Task, index:number) => index === action.payload.index ? {...todo, status: "pending" } : todo  ) 
+                
+            }
+        case "changeToProcess":
+            return {
+                todos: state.todos.map((todo: Task, index:number) => index === action.payload.index ? {...todo, status: "process" } : todo  ) 
+                
             }
         case "deleteTask":
             return {
