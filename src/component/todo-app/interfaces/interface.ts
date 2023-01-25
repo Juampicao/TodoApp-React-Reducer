@@ -16,3 +16,13 @@ export type TodoAction =
     | { type: 'changeToCompleted', payload: { index: number} }
     | { type: 'changeToPending', payload: { index: number } }
     | { type: 'changeToProcess', payload: {index: number} }    
+
+
+export const INITIAL_STATE_TODO = {
+    todos: [],
+}
+
+
+export const INITIAL_STATE_TASK : Task = {
+    title: "", description: "", status: "pending" 
+}

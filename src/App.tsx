@@ -1,13 +1,15 @@
 import "./App.css";
 import MainTodo from "./component/todo-app/pages/MainTodo";
+import { TodoProvider } from "./context/TodoProvider";
 
 const App = () => {
   return (
     <>
       <div className="bg-slate-200 p-10 min-h-full">
-        {/* <TodoProvider> */}
+        <TodoProvider>
           <MainTodo/>
-        {/* </TodoProvider> */}
+        </TodoProvider>
+        {/* <MainTodoLocal/>  */}
       </div>
     </>
   )
