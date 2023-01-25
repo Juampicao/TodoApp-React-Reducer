@@ -1,4 +1,4 @@
-import { CustomLogger } from "./customLogger";
+import { CustomLogger } from "./CustomLogger";
 
 
 const customLogger = new CustomLogger();

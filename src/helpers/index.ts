@@ -1,3 +1,3 @@
 export { CustomError } from "./CustomError"
-export { CustomLogger } from "./customLogger"
+export { CustomLogger } from "./CustomLogger"
 
