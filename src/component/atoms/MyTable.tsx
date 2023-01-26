@@ -23,10 +23,10 @@ const MyTable = ({tableStatus , title} : TableStatusProps ) => {
     
     return (
             
-        <div className={`my-3`}>
+        <div className={`my-3 `}>
             <h2 className={`${buttonsStyles[tableStatus].textColor}  text-xl font-bold text-center `}> Tareas {title}  </h2>
             <table className={` border-collapse rounded-xl  border--400 mx-auto p-5 text-white text-lg font-bold  text-center ${buttonsStyles[tableStatus].color} `}>
-                <thead className='bg-slate-800 text-white'>
+                <thead className='bg-slate-800  '>
                     <th className='px-10 border border-slate-300'>
                         Titulo
                     </th>

@@ -89,9 +89,9 @@ export default function MainTodo() {
 
             {/* Listed Task By Status */}            
             <div className="grid grid-rows grid-cols-1 md:grid-rows-1 md:grid-cols-3 ">
-                <MyTable tableStatus="completed" title="Completadas"/>
                 <MyTable tableStatus="pending"  title="Pendientes"/>
                 <MyTable tableStatus="process"  title="En Proceso"/>
+                <MyTable tableStatus="completed" title="Completadas"/>
             </div>
      
         </>
