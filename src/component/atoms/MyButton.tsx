@@ -22,7 +22,7 @@ const MyButton = ({ className, borderColor,type, onClick, value, text, disabled 
                 onClick={onClick}
                 value={value}
                 disabled={disabled}
-                className={`${disabled ? `${disabledStyles}` : ""} ${className ? className  : "bg-blue-500 hover:blue-600"} duration-150 hover:scale-x-105 px-5 py-2.5 border ${borderColor} rounded-xl text-white`}
+                className={`${disabled ? `${disabledStyles}` : ""} ${className ? className  : "bg-blue-500 hover:blue-600"} duration-150 hover:scale-x-105 px-5 py-2.5 border ${borderColor} rounded-xl text-white mx-auto`}
             >
                 {text}
             </button>

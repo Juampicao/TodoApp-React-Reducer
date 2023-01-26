@@ -24,21 +24,29 @@ export default function MainTodo() {
             <div className="grid grid-rows md:grid-cols-2">
                 <div>
                     {/* Form */}
-                    <form onSubmit={e => {
+                    <form
+                        onSubmit={e => {
                         AddTask(task);
                         e.preventDefault();
                         setTask({ title: "", description: "", status: "pending"})
                     }}>
-                        <div className="font-bold my-2 bg-slate-50 mx-2 p-5 max-w-md grid grid-rows-2 gap-y-3 items-center">
-                        <h2 className="font-bold text-center text-xl uppercase"> Agregar Tarea</h2>
+                        <div className="bg-slate-50 p-4 space-y-3 rounded-xl shadow-lg max-w-sm grid items-center">
+
+                            <h2 className="text-center text-xl font-bold"> Agregar Tarea</h2>
                             <div className="grid grid-cols-2">
-                                <label htmlFor="title" className="uppercase"> Titulo</label>
-                                <input type="text" id="title" className="border-black border-2 rounded-xl p-1 " value={task.title} onChange={(e) => setTask({ ...task ,title: e.target.value })} />
+                                <label htmlFor="title" className=""> Titulo</label>
+                                <input type="text" id="title"
+                                    className="border-slate-400 border-2 rounded-xl p-1 "
+                                    value={task.title}
+                                    onChange={(e) => setTask({ ...task, title: e.target.value })} />
                             </div>
                             
                             <div className="grid grid-cols-2">
-                                <label htmlFor="description" className="uppercase"> Descripcion</label>
-                                <textarea  id="description" className="border-black border-2 rounded-xl p-1" value={task.description} onChange={(e) => setTask({...task, description: e.target.value })} />
+                                <label htmlFor="description" className=""> Descripcion</label>
+                                <textarea id="description"
+                                    className="border-slate-400 border-2 rounded-xl p-1"
+                                    value={task.description}
+                                    onChange={(e) => setTask({ ...task, description: e.target.value })} />
                             </div>
 
                             <MyButton

@@ -30,7 +30,6 @@ const MyTaskTable = ({ task , index}: DescriptionTaskProps) => {
             <td className='px-2 border border-slate-300 flex space-x-2 p-2'>
             <MyButton      
                 className={`${buttonsStyles[task.status].nextColor} max-h-[50px] text-sm  `}
-                // borderColor={`${buttonsStyles[task.status].nextStep}`}
                 onClick={() => changeStateTask(task, index)}
                 text={`${buttonsStyles[task.status].nextStep}`}
             />
@@ -42,7 +41,7 @@ const MyTaskTable = ({ task , index}: DescriptionTaskProps) => {
                     />
                     
             <MyButton
-                className={`bg-slate-500 max-w-[100px] `}
+                className={` max-w-[100px] `}
                 type="button"
                 onClick={() => {openDetailmodal(), setSelectedTask(task)}}        
                 text={"Ver"}
